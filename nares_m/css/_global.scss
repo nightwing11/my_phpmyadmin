@@ -1,0 +1,30 @@
+// VARIABLES
+$black: #000;
+$white: #FFF;
+$red: #FF0000;
+
+// HELPFULL
+body, h1, h2, ul, li, p {
+	margin: 0;
+	padding: 0;
+}
+
+// NAV
+h1 { font-family: 'Courier', sans-serif; } /* Eurostile a gardé sous le coude */
+
+// OTHERS
+ul li { list-style: none; }
+a { text-decoration: none; }
+
+// BUTTONS
+.btn.black {
+	background-color: $white;
+	color: $black;
+}
+.btn.black:hover {
+	background-color: $black;
+	color: $white;
+	transition: color 0.1s, background-color 0.2s;
+	-moz-transition: color 0.1s, background-color 0.2s;
+	-webkit-transition: color 0.1s, background-color 0.2s;
+}
