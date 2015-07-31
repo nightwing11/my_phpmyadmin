@@ -1,3 +1,0 @@
-@import '_global';
-@import '_index';
-@import 'dashboard';

@@ -1,0 +1,30 @@
+// VARIABLES
+$black: #000;
+$white: #FFF;
+$red: #FF0000;
+
+// HELPFULL
+body, h1, h2, ul, li, p {
+	margin: 0;
+	padding: 0;
+}
+
+// OTHERS
+ul li { list-style: none; }
+a { text-decoration: none; }
+
+// MIXINS
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+@mixin box-shadow($x, $y, $blur, $distance, $color) {
+    -moz-box-shadow: $x $y $blur $distance $color;
+    -webkit-box-shadow: $x $y $blur $distance $color;
+    -o-box-shadow: $x $y $blur $distance $color;
+    box-shadow: $x $y $blur $distance $color;
+}

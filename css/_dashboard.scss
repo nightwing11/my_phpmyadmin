@@ -1,0 +1,45 @@
+.dashboard {
+	display: inline-block; position: relative; width: 100%;
+
+	header .titre, .site-container .liste-bdd { width: 20%; }
+	header .navigation, .site-container .contenu-site { width: 80%; }
+
+	header {
+        display: inline-block; position: relative; width: 100%; border-bottom: 1px solid #000; background-color: #000; color: #FFF;
+
+		.titre, .navigation {
+			display: inline-block; position: relative; padding: 2% 0;
+
+			h1 { font-size: 20px; padding-left: 5%; }
+
+			nav ul li {
+				display: inline; padding: 2%; margin-right: 5%;
+
+				&:last-child { margin-right: 0; }
+			}
+
+			a { color: #FFF; }
+		}
+	}
+
+	.site-container {
+		display: inline-block; position: relative; width: 100%;
+
+        .inner { padding: 20px; }
+
+		.liste-bdd, .contenu-site { display: inline-block; position: relative; }
+		.liste-bdd { background-color: #454545; color: #FFF; }
+		.liste-bdd a { color: #FFF; text-decoration: underline; }
+
+		.contenu-site { vertical-align: top; }
+
+		table {
+			display: inline-block; position: relative; width: 100%; border-collapse: collapse;
+
+			tr { width: 100%; }
+			td { border: 1px solid #000; padding: 5px; }
+		}
+
+		textarea { width: 100%; }
+	}
+}
