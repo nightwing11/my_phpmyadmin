@@ -14,3 +14,10 @@
 
 	$req->closeCursor();
 ?>
+
+   <form action="add_table.php" method="post">
+         <legend>Nouvelle table: </legend>
+        <input type="text" name="table_name" id="nb_col" placeholder="nom de la table" required>
+        <input type="number" name="nb_col" id="nb__col" placeholder="nombre de colonnes" required>
+        <input type="submit" name="creer" value="Exécuter">
+   </form>
