@@ -1,6 +1,6 @@
 <?php
-	//$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
-	$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', '');
+	$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
+	//$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', '');
 
 	$req = $db->query("SHOW TABLES");
 

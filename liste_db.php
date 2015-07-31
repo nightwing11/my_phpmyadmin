@@ -1,6 +1,6 @@
 <?php
-	//$db = new PDO('mysql:host=localhost;', 'root', 'root');
-	$db = new PDO('mysql:host=localhost;', 'root', '');
+	$db = new PDO('mysql:host=localhost;', 'root', 'root');
+	//$db = new PDO('mysql:host=localhost;', 'root', '');
 
 	$q = $db->query('SHOW DATABASES');
 	$count = 0;
