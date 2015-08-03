@@ -9,14 +9,16 @@ $db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', ''
 
     if(isset($table_name)) 
     {
-         echo '<p> nom de la table :'.$table_name.'</p>';
+         echo '<p> nom de la table : ' .$table_name. '</p>';
         for($i = 1; $i <= $nb_col; $i++) {
-            echo '<input type="text" name="table_name".$i id="nb_col" placeholder="nom du champ" required> <SELECT name="var" size="1">
-                <OPTION>Int
-                <OPTION>Varchar
-                <OPTION>Text
-                <OPTION>Date
-                </SELECT></br>'; 
+            echo '<input type="text" name="table_name".$i id="nb_col" placeholder="nom du champ" required>';
+            echo '<select name="var" size="1">';
+                echo '<option>Int</option>';
+                echo '<option>Varchar</option>';
+                echo '<option>Text</option>';
+                echo '<option>Date</option>';
+            echo '</select>';
+            echo '<br>';
         } 
 
         $sql = "CREATE table $table_name(ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY);";
@@ -24,11 +26,9 @@ $db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', ''
         $req = $db->exec($sql);
 
         if ($req === false)
-        echo 'ERREUR : ', print_r($db->errorInfo());
+            echo 'ERREUR : ', print_r($db->errorInfo());
         else
-        echo 'table creer';
-        
-        $req->closeCursor();
+            echo 'table creer';
     }
 
     //permet de lister les tables 
@@ -37,35 +37,30 @@ $db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', ''
 
 	$req = $db->query("SHOW TABLES");
     $totalColumns = $req->columnCount();
-    // $all = $req->fetchAll();
 
     $nbLignes = (count($donnees) / 2);
-    //print_r($all);
 
-    // if ( !empty($all) ) {
-        echo '<table>';
 
-        for ( $j = 0; $j < $totalColumns; $j++ ) {
-            $meta = $req->getColumnMeta($j);
-            $column[] = $meta['name'];
-            echo '<th>' . $column[$j] .'</th>';
+    echo '<table>';
+
+    for ( $j = 0; $j < $totalColumns; $j++ ) {
+        $meta = $req->getColumnMeta($j);
+        $column[] = $meta['name'];
+        echo '<th>' . $column[$j] .'</th>';
+    }
+
+    while ($donnees = $req->fetch()) {
+        echo '<tr>';
+        for ($i = 0; $i < $nbLignes; $i++) {
+            echo '<td><a href="dashboard.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '">' . $donnees[$i] . '</a></td>';
+            echo '<td><form action="supp_table.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '" method="post"><input type="submit" id="btn_drop_table" value="Supprimer"></form></td>';
         }
+        echo '</tr>';
+    }
 
-        while ($donnees = $req->fetch()) {
-            echo '<tr>';
-            for ($i = 0; $i < $nbLignes; $i++) {
-                echo '<td><a href="dashboard.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '">' . $donnees[$i] . '</a></td>';
-                echo '<td><form action="supp_table.php" method="post"><input type="submit" value="Supprimer"></form></td>';
-            }
-            echo '</tr>';
-        }
+    echo '</table>';
 
-        echo '</table>';
-
-        $req->closeCursor();
-    /*}
-    else
-        print "Aucune table n'a été trouvée dans cette base.";*/
+    $req->closeCursor();
 ?>
 
 <div class="add_new_table">
