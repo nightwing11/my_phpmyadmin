@@ -1,16 +1,3 @@
-$(document).ready(function() {
-	/* // GENERIC VARIABLES
-	var width = $(window).width();
-	var height = $(window).height();
-
-	// DASHBOARD
-	var headerHeight = $('header').height();
-	var containerHeight = height - headerHeight - 1;
-
-	$('.page_connexion').css("height", height);
-	$('.site-container, .liste-bdd, .contenu-site').css("min-height", containerHeight); */
-});
-
 $(function() {
     var singlePage = {
         init: function() {
@@ -25,6 +12,7 @@ $(function() {
             var width = $(window).width();
             var height = $(document).height();
             
+            $('.page_connexion').css("height", height);
             $('.site-container, .liste-bdd, .contenu-site').css("min-height", height - 84);
             
             // TRY HARD
@@ -36,6 +24,11 @@ $(function() {
             // ALERT ON DROP DATABASE
             $('#btn_drop_db').on('click', function() {
                 alert('Attention ! Cette action est irréversible !');
+            });
+            
+            // ALERT ON TRUNCATE TABLE
+            $('.btn-vider').on('click', function() {
+                alert('La table a bien été vidée !'); 
             });
         }
     };

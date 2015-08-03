@@ -47,7 +47,7 @@ $db = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"])
                 echo '<td><a href="dashboard.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '">' . $donnees[$i] . '</a></td>';
                 // echo '<td><form action="supp_table.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '" method="post"><input type="submit" id="btn_drop_table" value="Supprimer"></form></td>';
                 echo '<td>';
-                    echo '<a href="supp_table.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '&action=vider" class="ope-actions">Vider</a>';
+                    echo '<a href="supp_table.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '&action=vider" class="ope-actions btn-vider">Vider</a>';
                     echo '<a href="supp_table.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '&action=delete" class="ope-actions">Supprimer</a>';
                 echo '</td>';
             }

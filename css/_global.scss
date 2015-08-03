@@ -14,6 +14,29 @@ ul li { list-style: none; }
 a { text-decoration: none; }
 
 // MIXINS
+$fix-mqs: false !default;
+@mixin bp($point) {
+    @if $fix-mqs {
+        @if $fix-mqs >= $point {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (min-width: $point / 16 + em) {
+            @content;
+        }
+    }
+}
+
+@mixin bpmax($point) {
+    @media screen and (max-width: $point / 16 + em) { @content; }
+}
+
+@mixin fs($fontsize: 16, $fontbase: 16) {
+  font-size: $fontsize + px;
+  font-size: ($fontsize / $fontbase) * 1rem;
+}
+
 @mixin transition($transition-property, $transition-time, $method) {
   -webkit-transition: $transition-property $transition-time $method;
   -moz-transition: $transition-property $transition-time $method;

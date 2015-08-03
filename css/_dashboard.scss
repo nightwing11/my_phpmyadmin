@@ -1,4 +1,4 @@
-.dashboard {
+#dashboard {
 	display: inline-block; position: relative; width: 100%; font-family: 'Lato', sans-serif;
 
 	header .titre, .site-container .liste-bdd { width: 20%; }
@@ -54,4 +54,19 @@
 
 #operations {
     .new-table, .rename-base { margin-bottom: 20px; }
+}
+
+
+.resume {
+    display: inline-block; vertical-align: top; background-color: orange; color: #FFF; width: 250px; margin-right: 20px;
+    
+    &:last-child { margin-right: 0; }    
+    p { @include fs(24); }
+    .nb-bdd { @include fs(64); }  
+}
+.resume-bdd { text-align: right; }
+.resume-php, .resume-mysql {
+    text-align: left;
+    
+    .inner { padding: 35px 20px 34px !important; }
 }

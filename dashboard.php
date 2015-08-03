@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
 		
 	</head>
 
-	<body class="dashboard">
+	<body id="dashboard">
 		<header>
 			<div class="titre">
 				<h1><a href="dashboard.php">my_phpMyAdmin</a></h1>
@@ -56,8 +56,36 @@ if (!isset($_SESSION['username'])) {
 		--><div class="contenu-site">
                 <div class="inner">
                     <?php
-                        if ( ( isset($_GET["dbname"]) && $_GET["dbname"] == NULL ) || ( !isset($_GET["dbname"]) && !isset($_GET["sql"]) ) )
-                            echo "Il y a " . $nbDB . " BDD !<br>";
+                        if ( ( isset($_GET["dbname"]) && $_GET["dbname"] == NULL ) || ( !isset($_GET["dbname"]) && !isset($_GET["sql"]) ) ) {
+                        ?>
+                            <div class="dashboard">
+                                <div class="resume resume-bdd">
+                                    <div class="inner">
+                                        <p>
+                                            Il y a<br>
+                                            <span class="nb-bdd"><?php echo $nbDB; ?></span><br>
+                                            bases de données
+                                        </p>
+                                    </div>
+                                </div><!--
+                            --><div class="resume resume-php">
+                                    <div class="inner">
+                                        <p>
+                                            Version de PHP :<br>
+                                            <span class="nb-bdd"><?php echo phpversion(); ?></span>
+                                        </p>
+                                    </div>
+                                </div><!--
+                            --><div class="resume resume-mysql">
+                                    <div class="inner">
+                                        <p>
+                                            Version de MySQL :<br>
+                                            <span class="nb-bdd"><?php echo mysql_get_server_info(); ?></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
                         else if (isset($_GET["dbname"]) && $_GET["dbname"] == "0") {
                             ?>
                             <form action="create_db.php" method="post">
