@@ -31,7 +31,7 @@ echo "<p> Exécuter une requête SQL sur la base '" . $base . "' :</p>"
 ?>
 
 
-<div  class="formulaire_requete"> 
+<div class="formulaire_requete"> 
     <form method ="post" >
         <textarea name="req" rows="10" cols="15" value='req'></textarea>
         <button type="submit" name="execute" value="Excuter" >Executer</button> 
@@ -51,39 +51,27 @@ if(isset($_POST['execute']) && $_POST['execute'] == 'Excuter')
 			$db = new PDO('mysql:host=localhost;sql=' . htmlspecialchars($_GET["sql"]) . ';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
  			$requete = $_POST['req'];
  			$q = $db->query($requete);
-			
-
 		}
-			catch (PDOException $e) {
+        catch (PDOException $e) {
     		echo 'Erreur  : Aucune base sélectionnée ' ;
     		exit;
 		}
 	
 		if ($q == false)
 		  echo "Erreur de syntaxe SQL. Merci de corriger ;)";
-		else 
-
-		{	
-			
-		
-			 echo "<p>Votre requête SQL a été exécutée avec succès.</p>";
-			 echo "<br/>";
-			if(!preg_match("#select#", $requete))
-  			{
-
+		else {
+            
+            if(!preg_match("#select#", $requete)) {
+                
   				if (count($donnees = $q->fetch()) == 1)
-  				{  	
-  					echo "<p>La base est vide </p>";
-  					exit;
-  				} 
+                    echo "<p>La base est vide </p>";
+                
   				echo " Resulats: ";
-			   while ($donnees = $q->fetch()) 
- 				{
-	    		 echo '<li>'.$donnees[$count].'</li>' ;
-				}
-			 }
-			 else 
-			 { 
+                
+                while ($donnees = $q->fetch()) 
+                    echo '<li>'.$donnees[$count].'</li>' ;
+                
+			 } else { 
 
 			 	$donnees = $q->fetch();
 				$totalColumns = $q->columnCount();
@@ -91,7 +79,7 @@ if(isset($_POST['execute']) && $_POST['execute'] == 'Excuter')
 				$nbLignes = (count($donnees) / 2);
 
 				echo "Colonnes :".$totalColumns."</br>";
-				 echo "Lignes:".$nbLignes."</br>"; 
+				echo "Lignes:".$nbLignes."</br>"; 
 
 				echo '<table>';
 
@@ -110,10 +98,8 @@ if(isset($_POST['execute']) && $_POST['execute'] == 'Excuter')
 
 				echo '</table>';
 			
-			  }	
+            }
 		}
-	 echo '</br>';
-	 $q->closeCursor();
  	}
  	else 
 	{
