@@ -7,10 +7,10 @@
     .form_elem {
         display: inline-block; width: 200px; margin: 0 auto 5px;
         
-        &.last-el { margin-bottom: 20px; }
+        &.last-el { margin-bottom: 15px; }
     }
     input[type="text"], input[type="password"] { display: block; width: auto; padding: 5px 10px; }
-    button { border: 1px solid #000; background-color: #FFF; width: 200px; padding: 5px 10px; cursor: pointer; }
+    button { border: 1px solid #000; background-color: #FFF; width: 200px; padding: 8px 10px; cursor: pointer; }
     .btn.black { background-color: $white; color: $black; @include transition(all, 0.2s, ease); }
     .btn.black:hover { background-color: $black; color: $white; }
 }

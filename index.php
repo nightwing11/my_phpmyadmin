@@ -38,14 +38,14 @@ $erreur = 'Au moins un des champs est vide.';
                 <div  class="formulaire_connexion">
                     <form action= "index.php" method="post">
                         <div class="form_elem">
-                            <input type="text" name="username" placeholder="Username" value = "<?php if (isset($_POST['username'])) echo htmlentities(trim($_POST['Username'])); ?>" required>
+                            <input type="text" name="username" placeholder="Username" size="21" required>
                         </div><!--
 
                     --><div class="form_elem last-el">
-                            <input type="password" name="password" placeholder="Password" value = "<?php if (isset($_POST['Password'])) echo htmlentities(trim($_POST['Password'])); ?>" required>
+                            <input type="password" name="password" placeholder="Password" size="21" required>
                         </div>
                         
-                        <button type="submit" name="connexion" class="btn_connexion btn black" value = 'Connexion'>Se connecter</button>
+                        <button type="submit" name="connexion" class="btn_connexion btn black" value='Connexion'>Se connecter</button>
                     </form>
                     <?php
                     if (isset($erreur)) echo '<br /><br />',$erreur;
