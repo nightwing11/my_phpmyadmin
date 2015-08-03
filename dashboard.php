@@ -74,33 +74,41 @@ if (!isset($_SESSION['username'])) {
                             include('requete.php');
                         else if (isset($_GET["ope"])) {
                             ?>
-                            <form action="operation.php" method="get">
-                                <fieldset>
-                                    <legend>Nouvelle table</legend>
-                                    <input type="hidden" name="dbname" id="dbname" value="<?php echo $_GET["dbname"] ?>">
-                                    <label for="nom_table">Nom : </label>
-                                    <input type="text" name="nom_table" id="nom_table" required>
-                                    <label for="nb_colonnes">Nombre de colonnes : </label>
-                                    <input type="number" name="nb_colonnes" id="nb_colonnes" min="0" required>
-                                    <input type="button" name="btn_create_table" id="btn_create_table" value="Exécuter" onClick="nbColonne()">
-                                </fieldset>
-                            </form>
-                            <form action="operation.php" method="get">
-                                <fieldset>
-                                    <legend>Renommer la base de données comme suit :</legend>
-                                    <input type="hidden" name="dbname" id="dbname" value="<?php echo $_GET["dbname"] ?>">
-                                    <input type="text" name="nom_db" id="nom_db" required>
-                                    <input type="submit" name="executer" value="Exécuter">
-                                </fieldset>
-                            </form>
-                            <form action="operation.php" method="post">
-                                <fieldset>
-                                    <legend>Supprimer la base de données</legend>
-                                    <input type="hidden" name="dbname" id="dbname" value="<?php echo $_GET["dbname"] ?>">
-                                    <input type="hidden" name="drop_db" id="drop_db" value="DROP DATABASE <?php echo $_GET["dbname"] ?>">
-                                    <input type="submit" name="btn_drop_db" id="btn_drop_db" value="Exécuter">
-                                </fieldset>
-                            </form>
+                            <div id="operations">
+                                <div class="new-table">
+                                    <form action="operation.php" method="get">
+                                        <fieldset>
+                                            <legend>Nouvelle table</legend>
+                                            <input type="hidden" name="dbname" id="dbname" value="<?php echo $_GET["dbname"] ?>">
+                                            <label for="nom_table">Nom : </label>
+                                            <input type="text" name="nom_table" id="nom_table" required>
+                                            <label for="nb_colonnes">Nombre de colonnes : </label>
+                                            <input type="number" name="nb_colonnes" id="nb_colonnes" min="0" required>
+                                            <input type="button" name="btn_create_table" id="btn_create_table" value="Exécuter" onClick="nbColonne()">
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="rename-base">
+                                    <form action="operation.php" method="get">
+                                        <fieldset>
+                                            <legend>Renommer la base de données comme suit :</legend>
+                                            <input type="hidden" name="dbname" id="dbname" value="<?php echo $_GET["dbname"] ?>">
+                                            <input type="text" name="nom_db" id="nom_db" required>
+                                            <input type="submit" name="executer" value="Exécuter">
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="delete-base">
+                                    <form action="operation.php" method="post">
+                                        <fieldset>
+                                            <legend>Supprimer la base de données</legend>
+                                            <input type="hidden" name="dbname" id="dbname" value="<?php echo $_GET["dbname"] ?>">
+                                            <input type="hidden" name="drop_db" id="drop_db" value="DROP DATABASE <?php echo $_GET["dbname"] ?>">
+                                            <input type="submit" name="btn_drop_db" id="btn_drop_db" value="Exécuter">
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
                             <?php
                         }
                         else

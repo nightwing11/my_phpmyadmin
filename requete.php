@@ -5,8 +5,8 @@
 	try
 	{
 
-		// $db = new PDO('mysql:host=localhost;', 'root', 'root');
-		$db = new PDO('mysql:host=localhost;', 'root', '');
+		// $db = new PDO('mysql:host=localhost;', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+		$db = new PDO('mysql:host=localhost;', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
  	
  		$q = $db->query('SHOW DATABASES');
 	}
@@ -51,8 +51,8 @@ if(isset($_POST['execute']) && $_POST['execute'] == 'Excuter')
 	
 		try
 		{
-			// $db = new PDO('mysql:host=localhost;dbname=' . $_GET["sql"] . ';', 'root', 'root');
-			$db = new PDO('mysql:host=localhost;sql=' . $_GET["sql"] . ';', 'root', '');
+			// $db = new PDO('mysql:host=localhost;dbname=' . $_GET["sql"] . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+			$db = new PDO('mysql:host=localhost;sql=' . $_GET["sql"] . ';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
  			$requete = $_POST['req'];
  			$q = $db->query($requete);
 			
