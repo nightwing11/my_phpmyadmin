@@ -26,6 +26,7 @@ $erreur = 'Au moins un des champs est vide.';
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<title>my_phpMyAdmin</title>
 	</head>
 

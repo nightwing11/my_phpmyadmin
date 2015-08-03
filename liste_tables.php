@@ -26,8 +26,7 @@ if(isset($table_name))
 			</SELECT></br>'; 
 	} 
 
-	$sql = "CREATE table $table_name(
-     ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY);";
+	$sql = "CREATE table $table_name(ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY);";
 
 	$req = $db->exec($sql);
 	

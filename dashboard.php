@@ -12,13 +12,15 @@ if (!isset($_SESSION['username'])) {
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<title>my_phpMyAdmin - Dashboard</title>
+		
 	</head>
 
 	<body class="dashboard">
 		<header>
 			<div class="titre">
-				<h1><a href="dashboard.php?dbname=">my_phpMyAdmin</a></h1>
+				<h1><a href="dashboard.php">my_phpMyAdmin</a></h1>
 			</div><!--
 
 		--><div class="navigation">
@@ -54,7 +56,7 @@ if (!isset($_SESSION['username'])) {
 		--><div class="contenu-site">
                 <div class="inner">
                     <?php
-                        if (isset($_GET["dbname"]) && $_GET["dbname"] == NULL)
+                        if ( ( isset($_GET["dbname"]) && $_GET["dbname"] == NULL ) || ( !isset($_GET["dbname"]) ) )
                             echo "Il y a " . $nbDB . " BDD !<br>";
                         else if ($_GET["dbname"] == "0") {
                             ?>

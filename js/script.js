@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var containerHeight = height - headerHeight - 1;
 
 	$('.page_connexion').css("height", height);
-	$('.site-container, .liste-bdd, .contenu-site').css("height", containerHeight);
+	$('.site-container, .liste-bdd, .contenu-site').css("min-height", containerHeight);
 });
 
 $(function() {
