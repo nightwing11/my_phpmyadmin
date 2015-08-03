@@ -1,8 +1,8 @@
 <?php
 /* Création d'une table */
 if (isset($_POST["nom_table"])) {
-	//$db = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', '');
-	$db = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', 'root');
+    $db = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', '');
+	// $db = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', 'root');
 
 	$q = $db->query('CREATE TABLE ' . htmlspecialchars($_POST["nom_table"]) . '');
 	// Ajouter des champs pour mettre des colonnes
@@ -12,8 +12,8 @@ if (isset($_POST["nom_table"])) {
 
 /* Rename bdd */
 if (isset($_POST["nom_db"])) {
-	//$base = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', '');
-	 $base = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', 'root');
+	$base = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', '');
+    // $base = new PDO('mysql:host=localhost;dbname='. $_POST["dbname"] .';', 'root', 'root');
 
 	$query = $base->query(''); // UPDATE ?
 	$query->closeCursor();
@@ -23,8 +23,8 @@ if (isset($_POST["nom_db"])) {
 
 /* Drop bdd */
 if (isset($_POST["drop_db"])) {
-	//$database = new PDO('mysql:host=localhost;', 'root', '');
-	 $database = new PDO('mysql:host=localhost;', 'root', 'root');
+	$database = new PDO('mysql:host=localhost;', 'root', '');
+    // $database = new PDO('mysql:host=localhost;', 'root', 'root');
 
 	$requete = $database->query($_POST["drop_db"]);
 	$requete->closeCursor();

@@ -1,6 +1,6 @@
 <?php
-$base = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
-//$base = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', '');
+// $base = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
+$base = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', '');
 
 $request = $base->query('SELECT * FROM ' . $_GET["tablename"] . '');
 $donnees = $request->fetch();

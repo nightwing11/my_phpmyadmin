@@ -5,8 +5,8 @@
 	try
 	{
 
-		$db = new PDO('mysql:host=localhost;', 'root', 'root');
-		//$db = new PDO('mysql:host=localhost;', 'root', '');
+		// $db = new PDO('mysql:host=localhost;', 'root', 'root');
+		$db = new PDO('mysql:host=localhost;', 'root', '');
  	
  		$q = $db->query('SHOW DATABASES');
 	}
@@ -47,8 +47,8 @@ if(isset($_POST['execute']) && $_POST['execute'] == 'Excuter')
 	
 		try
 		{
-			$db = new PDO('mysql:host=localhost;dbname=' . $_GET["sql"] . ';', 'root', 'root');
-			//$db = new PDO('mysql:host=localhost;sql=' . $_GET["sql"] . ';', 'root', '');
+			// $db = new PDO('mysql:host=localhost;dbname=' . $_GET["sql"] . ';', 'root', 'root');
+			$db = new PDO('mysql:host=localhost;sql=' . $_GET["sql"] . ';', 'root', '');
  			$requete = $_POST['req'];
  			$q = $db->query($requete);
 			

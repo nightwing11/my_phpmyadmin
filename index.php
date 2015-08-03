@@ -8,7 +8,7 @@ if($_POST['username'] == "root" && $_POST['password'] == "root")
 		session_start();
 		$_SESSION['username'] = $_POST['username'];
 		echo '<SCRIPT LANGUAGE="JavaScript"> 
-		document.location.href="dashboard.php?dbname=0"; 
+		document.location.href="dashboard.php?dbname="; 
 	</SCRIPT>';
 	exit();
 	}

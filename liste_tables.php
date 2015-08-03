@@ -8,10 +8,12 @@
 
 <?php 
 
-$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
+// $db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
+$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', '');
+
 //partie php qui affiche et gére l'ajout d'un table et ses champs 
-	$nb_col = $_POST['nb_col'];
-	$table_name = $_POST['table_name'];
+	$nb_col = ( isset($_POST['nb_col']) ) ? $_POST['nb_col'] : NULL;
+	$table_name = ( isset($_POST['table_name']) ) ? $_POST['table_name'] : NULL;
 if(isset($table_name)) 
 {
 	 echo '<p> nom de la table :'.$table_name.'</p>';
@@ -35,22 +37,39 @@ if(isset($table_name))
     echo 'table creer';
 }
 
-?>
-<?php
-
 //permet de lister les tables 
-	$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
-	//$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', '');
+	// $db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root');
+	$db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', '');
 
 	$req = $db->query("SHOW TABLES");
+    $totalColumns = $req->columnCount();
+    $nbLignes = (count($donnees) / 2);
 
-	echo '<ul>';
+    echo '<table>';
+
+    for ( $j = 0; $j < $totalColumns; $j++ ) {
+        $meta = $req->getColumnMeta($j);
+        $column[] = $meta['name'];
+        echo '<th>' . $column[$j] .'</th>';
+    }
+
+    while ($donnees = $req->fetch()) {
+        echo '<tr>';
+        for ($i = 0; $i < $nbLignes; $i++)
+            echo '<td>' . $donnees[$i] . '</td>';
+            echo '<td><form action="supp_table.php" method="post"><input type="submit" value="Supprimer"></form></td>';
+        echo '</tr>';
+    }
+
+    echo '</table>';
+
+	/* echo '<ul>';
 
 	while ($donnees = $req->fetch()) {
 		echo '<form action="supp_table.php" method="post"><li><a href="dashboard.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$count] . '">' . $donnees[$count] .  '</a><input type="hidden" name="$donnees[$count]"/><input type="submit" value="Supprimer"></li></form>';
 	}
 
-	echo '</ul>';
+	echo '</ul>'; */
 
 	$req->closeCursor();
 ?>
