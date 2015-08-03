@@ -56,9 +56,9 @@ if (!isset($_SESSION['username'])) {
 		--><div class="contenu-site">
                 <div class="inner">
                     <?php
-                        if ( ( isset($_GET["dbname"]) && $_GET["dbname"] == NULL ) || ( !isset($_GET["dbname"]) ) )
+                        if ( ( isset($_GET["dbname"]) && $_GET["dbname"] == NULL ) || ( !isset($_GET["dbname"]) && !isset($_GET["sql"]) ) )
                             echo "Il y a " . $nbDB . " BDD !<br>";
-                        else if ($_GET["dbname"] == "0") {
+                        else if (isset($_GET["dbname"]) && $_GET["dbname"] == "0") {
                             ?>
                             <form action="create_db.php" method="post">
                                 <legend>Créer une base de données</legend>

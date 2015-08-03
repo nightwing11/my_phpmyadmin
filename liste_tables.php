@@ -55,20 +55,12 @@ if(isset($table_name))
     while ($donnees = $req->fetch()) {
         echo '<tr>';
         for ($i = 0; $i < $nbLignes; $i++)
-            echo '<td>' . $donnees[$i] . '</td>';
+            echo '<td><a href="dashboard.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$count] . '">' . $donnees[$i] . '</a></td>';
             echo '<td><form action="supp_table.php" method="post"><input type="submit" value="Supprimer"></form></td>';
         echo '</tr>';
     }
 
     echo '</table>';
-
-	/* echo '<ul>';
-
-	while ($donnees = $req->fetch()) {
-		echo '<form action="supp_table.php" method="post"><li><a href="dashboard.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$count] . '">' . $donnees[$count] .  '</a><input type="hidden" name="$donnees[$count]"/><input type="submit" value="Supprimer"></li></form>';
-	}
-
-	echo '</ul>'; */
 
 	$req->closeCursor();
 ?>
