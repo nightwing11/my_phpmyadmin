@@ -28,7 +28,7 @@ if (!isset($_SESSION['username'])) {
 					<ul>
 						<li><a href="dashboard.php?dbname=0">Bases de données</a></li>
 						<li><a href="dashboard.php?sql=0">SQL</a></li>
-						<li><a href="">Exporter</a></li>
+						<li><a href="dashboard.php?importer=0">Importer</a></li>
 						<?php
 							if (isset($_GET["dbname"]) && ($_GET["dbname"] != "information_schema") &&
 															($_GET["dbname"] != "mysql") &&
@@ -56,7 +56,7 @@ if (!isset($_SESSION['username'])) {
 		--><div class="contenu-site">
                 <div class="inner">
                     <?php
-                        if ( ( isset($_GET["dbname"]) && $_GET["dbname"] == NULL ) || ( !isset($_GET["dbname"]) && !isset($_GET["sql"]) ) ) {
+                        if ( ( isset($_GET["dbname"]) && $_GET["dbname"] == NULL ) || ( !isset($_GET["dbname"]) && !isset($_GET["sql"]) && !isset($_GET["importer"]) ) ) {
                         ?>
                             <div class="dashboard">
                                 <div class="resume resume-bdd">
@@ -100,6 +100,26 @@ if (!isset($_SESSION['username'])) {
                             include('liste_lignes.php');
                         else if (isset($_GET["sql"]))
                             include('requete.php');
+                        else if (isset($_GET["importer"])) {
+                        ?>
+                            <div id="importation">
+                                <h1>Importation dans le serveur actuel</h1>
+
+                                <h2>Fichier à importer :</h2>
+                                <form action="import.php" method="post">
+                                    <p>
+                                        Le fichier peut être comprimé (gzip, bzip2, zip) ou non.<br>
+                                        Le nom du fichier comprimé doit se terminer par .[format].[compression]. Exemple: .sql.zip
+                                    </p>
+                                    
+                                    <label for="file">Parcourir :</label>
+                                    <input type="file" name="file" id="file" />
+                                    <p class="taille_max">(Taille maximum: 2 048Kio)</p><br><br>
+                                    
+                                    <input type="submit" name="uploder" id="uploader" value="Exécuter" />
+                                </form>
+                            </div>
+                        <?php }
                         else if (isset($_GET["ope"])) {
                             ?>
                             <div id="operations">

@@ -68,3 +68,13 @@
     
     .inner { padding: 35px 20px 34px !important; }
 }
+
+#importation {
+    
+    h1 { margin-bottom: 20px; }
+    h2 { border-bottom: 1px solid grey; margin-bottom: 10px; }
+    p { line-height: 1em; margin-bottom: 10px; }
+    .taille_max { @include fs(12); }
+    input[type="file"], .taille_max { display: inline-block; vertical-align: middle; }
+    .taille_max { margin-bottom: 0; }
+}
