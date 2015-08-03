@@ -42,7 +42,11 @@
 
 		textarea { width: 100%; }
         input[type="submit"] { cursor: pointer; }
-        .ope-actions { text-decoration: underline; }
+        .ope-actions {
+            text-decoration: underline; padding-right: 5px;
+            
+            &:last-child { padding-right: 0; }
+        }
 	}
     
     .add_new_table { margin-top: 20px; }

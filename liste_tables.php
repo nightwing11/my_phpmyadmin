@@ -40,7 +40,7 @@ $db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', ''
 
     echo '<table>';
         echo '<th>Tables</th>';
-        echo '<th>Actions</th>';
+        echo '<th>Action</th>';
 
         while ($donnees = $req->fetch()) {
             echo '<tr>';
@@ -48,7 +48,8 @@ $db = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', ''
                 echo '<td><a href="dashboard.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '">' . $donnees[$i] . '</a></td>';
                 // echo '<td><form action="supp_table.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '" method="post"><input type="submit" id="btn_drop_table" value="Supprimer"></form></td>';
                 echo '<td>';
-                    echo '<a href="supp_table.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '" class="ope-actions">Supprimer</a>';
+                    echo '<a href="supp_table.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '&action=vider" class="ope-actions">Vider</a>';
+                    echo '<a href="supp_table.php?dbname=' . $_GET["dbname"] . '&tablename=' . $donnees[$i] . '&action=delete" class="ope-actions">Supprimer</a>';
                 echo '</td>';
             }
             echo '</tr>';
