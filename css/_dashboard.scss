@@ -41,5 +41,8 @@
 		}
 
 		textarea { width: 100%; }
+        input[type="submit"] { cursor: pointer; }
 	}
+    
+    .add_new_table { margin-top: 20px; }
 }

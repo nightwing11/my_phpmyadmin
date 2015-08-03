@@ -21,8 +21,12 @@
  echo "<br/>";
 
 
+if ( $_GET["sql"] != "0" )
+    $base = $_GET["sql"];
+else
+    $base = "localhost";
 
-echo "<p> Exécuter une requête SQL sur la base " .$_GET["sql"].":</p>"
+echo "<p> Exécuter une requête SQL sur la base '" . $base . "' :</p>"
 
 ?>
 
