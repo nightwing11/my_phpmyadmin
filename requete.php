@@ -30,17 +30,13 @@ echo "<p> Exécuter une requête SQL sur la base '" . $base . "' :</p>"
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<body>
-	<div  class="formulaire_requete"> 
-						<FORM method ="post" >
-						<TEXTAREA name="req" rows="10" cols="15" value='req'></TEXTAREA>
-						<button type="submit" name="execute" value="Excuter" >Executer</button> 
-						</FORM>
-	</div>
-</body>
-</html>
+
+<div  class="formulaire_requete"> 
+    <form method ="post" >
+        <textarea name="req" rows="10" cols="15" value='req'></textarea>
+        <button type="submit" name="execute" value="Excuter" >Executer</button> 
+    </form>
+</div>
 
 <?php
 //gestion du  formulaire de requete sql 
