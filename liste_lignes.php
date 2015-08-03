@@ -1,8 +1,8 @@
 <?php
-// $base = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-$base = new PDO('mysql:host=localhost;dbname=' . $_GET["dbname"] . '', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+// $base = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"]) . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+$base = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"]) . '', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
-$request = $base->query('SELECT * FROM ' . $_GET["tablename"] . '');
+$request = $base->query('SELECT * FROM ' . htmlspecialchars($_GET["tablename"] . ''));
 $donnees = $request->fetch();
 $totalColumns = $request->columnCount();
 

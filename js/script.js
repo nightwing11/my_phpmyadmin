@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	// GENERIC VARIABLES
+	/* // GENERIC VARIABLES
 	var width = $(window).width();
 	var height = $(window).height();
 
@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var containerHeight = height - headerHeight - 1;
 
 	$('.page_connexion').css("height", height);
-	$('.site-container, .liste-bdd, .contenu-site').css("min-height", containerHeight);
+	$('.site-container, .liste-bdd, .contenu-site').css("min-height", containerHeight); */
 });
 
 $(function() {
@@ -20,6 +20,12 @@ $(function() {
         },
         
         initTriggers: function() {
+            
+            // GENERIC VARS
+            var width = $(window).width();
+            var height = $(document).height();
+            
+            $('.site-container, .liste-bdd, .contenu-site').css("min-height", height - 84);
             
             // TRY HARD
             if ( $('table').has('td') ) {
