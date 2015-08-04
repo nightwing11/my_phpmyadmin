@@ -1,35 +1,5 @@
 <?php 
 
-// $db = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"]) . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-$db = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"]) . ';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-
-//partie php qui affiche et gére l'ajout d'un table et ses champs 
-	$nb_col = ( isset($_POST['nb_col']) ) ? $_POST['nb_col'] : NULL;
-	$table_name = ( isset($_POST['table_name']) ) ? $_POST['table_name'] : NULL;
-
-    if(isset($table_name)) 
-    {
-         echo '<p> nom de la table : ' .$table_name. '</p>';
-        for($i = 1; $i <= $nb_col; $i++) {
-            echo '<input type="text" name="table_name".$i id="nb_col" placeholder="nom du champ" required>';
-            echo '<select name="var" size="1">';
-                echo '<option>Int</option>';
-                echo '<option>Varchar</option>';
-                echo '<option>Text</option>';
-                echo '<option>Date</option>';
-            echo '</select>';
-            echo '<br>';
-        } 
-
-        $sql = "CREATE table $table_name(ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY);";
-
-        $req = $db->exec($sql);
-
-        if ($req === false)
-            echo 'ERREUR : ', print_r($db->errorInfo());
-    }
-    else {
-
     //permet de lister les tables 
 	// $db = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"]) . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 	$db = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"]) . ';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
@@ -60,18 +30,16 @@ $db = new PDO('mysql:host=localhost;dbname=' . htmlspecialchars($_GET["dbname"])
 ?>
 
 <div class="add_new_table">
-    <form method="post">
+    <form action="add_table.php" method="post">
         <fieldset>
             <legend>Nouvelle table</legend>
 
             <label for="nb_col">Nom de la table : </label>
             <input type="text" name="table_name" id="nb_col" required>
             <label for="nb__col">Nombre de colonnes : </label>
-            <input type="number" name="nb_col" id="nb__col" required>
+            <input type="number" name="nb_col" id="nb__col" value="4" required>
+            <input type="hidden" name="dbname" id="dbname" value="<?php print htmlspecialchars($_GET["dbname"]); ?>" >
             <input type="submit" name="add" value="Exécuter">
         </fieldset>
     </form>
 </div>
-
-
-<?php } ?>
