@@ -10,9 +10,10 @@ $describe_table = "DESCRIBE $tablename";
 $rep_describe = $struct_db->query($describe_table);
 
 echo '<table>';
-    echo '<th>Field</th>';
-    echo '<th>Type</th>';
+    echo '<th>Champ</th>';
+    echo '<th>Type/Valeur</th>';
     echo '<th>Null</th>';
+    echo '<th>Action</th>';
 
     while ($data = $rep_describe->fetchAll()) {    
         
@@ -22,6 +23,10 @@ echo '<table>';
                 echo '<td>' . $data[$a][0] . '</td>';
                 echo '<td>' . $data[$a][1] . '</td>';
                 echo '<td>' . $data[$a][2] . '</td>';
+                echo '<td>';
+                    echo '<a href="" class="ope-actions">Modifier</a>';
+                    echo '<a href="" class="ope-actions">Supprimer</a>';
+                echo'</td>';
             echo '</tr>';
         }
 
