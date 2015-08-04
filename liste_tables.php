@@ -54,7 +54,7 @@ $req->closeCursor();
     $table_name = ( isset($_POST['table_name']) ) ? $_POST['table_name'] : NULL;
 
     echo '<label>Nom de la table :</label>';
-    echo '<input type="text" name="' . $table_name . '" id="' . $table_name . '" value="' . $table_name . '">';
+    echo '<input type="text" name="' . $table_name . '" id="' . $table_name . '" value="' . $table_name . '" class="table_name">';
 
     echo '<table>';
         echo '<th>Nom</th>';

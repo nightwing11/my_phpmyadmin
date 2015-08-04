@@ -41,7 +41,7 @@
 		}
 
 		textarea { width: 100%; }
-        input[type="submit"] { cursor: pointer; }
+        input[type="submit"], select, input[type="checkbox"] { cursor: pointer; }
         .ope-actions {
             text-decoration: underline; padding-right: 5px;
             
@@ -50,6 +50,7 @@
 	}
     
     .add_new_table { margin-top: 20px; }
+    .table_name { margin-left: 10px; }
 }
 
 .new-table, .rename-base, .formulaire_requete { margin-bottom: 20px; } 
