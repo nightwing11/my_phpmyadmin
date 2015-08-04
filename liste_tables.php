@@ -40,7 +40,6 @@ $req->closeCursor();
             <input type="text" name="table_name" id="nb_col" required>
             <label for="nb__col">Nombre de colonnes : </label>
             <input type="number" name="nb_col" id="nb__col" value="4" required>
-            <input type="hidden" name="dbname" id="dbname" value="<?php print htmlspecialchars($_GET["dbname"]); ?>" >
             <input type="submit" name="add" value="Exécuter">
         </fieldset>
     </form>
@@ -53,31 +52,33 @@ $req->closeCursor();
     $nb_col = ( isset($_POST['nb_col']) ) ? $_POST['nb_col'] : NULL;
     $table_name = ( isset($_POST['table_name']) ) ? $_POST['table_name'] : NULL;
 
-    echo '<label>Nom de la table :</label>';
-    echo '<input type="text" name="' . $table_name . '" id="' . $table_name . '" value="' . $table_name . '" class="table_name">';
+    echo '<form action="add_table.php" method="post">';
+        echo '<label>Nom de la table :</label>';
+        echo '<input type="text" name="table_name" id="table_name" value="' . $table_name . '" class="table_name">';
 
-    echo '<table>';
-        echo '<th>Nom</th>';
-        echo '<th>Type</th>';
-        echo '<th>Taille/Valeurs</th>';
-        echo '<th>Null</th>';
-        echo '<th>A_I</th>';
+        echo '<table>';
+            echo '<th>Nom</th>';
+            echo '<th>Type</th>';
+            echo '<th>Taille/Valeurs</th>';
+            echo '<th>Null</th>';
 
-        for($i = 1; $i <= $nb_col; $i++) {
-        ?>
-            <tr>
-                <td><input type="text" name="champ<?php print $i; ?>" id="champ<?php print $i; ?>"></td>
-                <td><select name="datatype" id="datatype">
-                    <option value="int">INT</option>
-                    <option value="varchar">VARCHAR</option>
-                    <option value="text">TEXT</option>
-                    <option value="date">DATE</option>
-                </select></td>
-                <td><input type="text" name="value" id="value"></td>
-                <td><input type="checkbox" name="null" id="null"></td>
-                <td><input type="checkbox" name="auto_increment" id="auto_increment"></td>
-            </tr>
-        <?php }
-    echo '</table>';
+            for($i = 1; $i <= $nb_col; $i++) {
+            ?>
+                <tr>
+                    <td><input type="text" name="champ" id="champ"></td>
+                    <td><select name="datatype" id="datatype">
+                        <option value="INT">INT</option>
+                        <option value="VARCHAR">VARCHAR</option>
+                        <option value="TEXT">TEXT</option>
+                        <option value="DATE">DATE</option>
+                    </select></td>
+                    <td><input type="text" name="value" id="value"></td>
+                    <td><input type="checkbox" name="null" id="null"></td>
+                    <input type="hidden" name="dbname" id="dbname" value="<?php print htmlspecialchars($_GET["dbname"]); ?>" >
+                </tr>
+            <?php }
+        echo '</table>';
+        echo '<input type="submit" name="submit" id="submit" value="Exécuter">';
+    echo '</form>';
     
 }
