@@ -17,7 +17,6 @@ echo '<table>';
         echo '<tr>';
         for ($i = 0; $i < $nbLignes; $i++) {
             echo '<td><a href="dashboard.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '">' . $donnees[$i] . '</a></td>';
-            // echo '<td><form action="supp_table.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '" method="post"><input type="submit" id="btn_drop_table" value="Supprimer"></form></td>';
             echo '<td>';
                 echo '<a href="supp_table.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '&action=vider" class="ope-actions btn-vider">Vider</a>';
                 echo '<a href="supp_table.php?dbname=' . htmlspecialchars($_GET["dbname"]) . '&tablename=' . $donnees[$i] . '&action=delete" class="ope-actions">Supprimer</a>';
@@ -48,7 +47,7 @@ $req->closeCursor();
 
 <?php } else {
     
-    //partie php qui affiche et gére l'ajout d'un table et ses champs 
+    //partie php qui affiche et gére l'ajout d'une table et de ses champs 
     $nb_col = ( isset($_POST['nb_col']) ) ? $_POST['nb_col'] : NULL;
     $table_name = ( isset($_POST['table_name']) ) ? $_POST['table_name'] : NULL;
 
@@ -65,15 +64,18 @@ $req->closeCursor();
             for($i = 1; $i <= $nb_col; $i++) {
             ?>
                 <tr>
-                    <td><input type="text" name="champ" id="champ"></td>
-                    <td><select name="datatype" id="datatype">
-                        <option value="INT">INT</option>
-                        <option value="VARCHAR">VARCHAR</option>
-                        <option value="TEXT">TEXT</option>
-                        <option value="DATE">DATE</option>
-                    </select></td>
-                    <td><input type="text" name="value" id="value"></td>
-                    <td><input type="checkbox" name="null" id="null"></td>
+                    <td><input type="text" name="champ<?php print $i; ?>" id="champ<?php print $i; ?>"></td>
+                    <td>
+                        <select name="datatype<?php print $i; ?>" id="datatype<?php print $i; ?>">
+                            <option value="INT">INT</option>
+                            <option value="VARCHAR">VARCHAR</option>
+                            <option value="TEXT">TEXT</option>
+                            <option value="DATE">DATE</option>
+                        </select>
+                    </td>
+                    <td><input type="text" name="value<?php print $i; ?>" id="value<?php print $i; ?>"></td>
+                    <td><input type="checkbox" name="null<?php print $i; ?>" id="null<?php print $i; ?>"></td>
+                    <input type="hidden" name="nbcol" id="nbcol" value="<?php print $nb_col; ?>" >
                     <input type="hidden" name="dbname" id="dbname" value="<?php print htmlspecialchars($_GET["dbname"]); ?>" >
                 </tr>
             <?php }
