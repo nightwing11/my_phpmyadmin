@@ -17,13 +17,13 @@ if ($ajoute_table === false) {
     echo '<a href="dashboard.php?dbname=' . $db_name . '">Revenir en arrière</a>';
 } else {
     
-    // REQUETE QUI AJOUTE LES CHAMPS
     for ($i = 1; $i < $nb_col + 1; $i++) {
         $nom_champ = htmlspecialchars($_POST["champ$i"]);
         $datatype = htmlspecialchars($_POST["datatype$i"]);
         $value = htmlspecialchars($_POST["value$i"]);
         $null = ( isset($_POST["null$i"]) ) ? 'NULL' : 'NOT NULL';
 
+        // REQUETE QUI AJOUTE LES CHAMPS
         $alter_table = "ALTER TABLE $table_name ADD $nom_champ $datatype( $value ) $null";
         $ajoute_champ = $con_db->exec($alter_table);
     }

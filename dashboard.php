@@ -27,6 +27,10 @@ if (!isset($_SESSION['username'])) {
 				<nav>
 					<ul>
 						<li><a href="dashboard.php?dbname=0">Bases de données</a></li>
+						<?php
+							if (isset($_GET["tablename"]))
+								echo '<li><a href="dashboard.php?dbname=' . $_GET["dbname"] . '&tablename=' . $_GET["tablename"] . '&structure=0">Structure</a></li>';
+						?>
 						<li><a href="dashboard.php?sql=0">SQL</a></li>
 						<li><a href="dashboard.php?importer=0">Importer</a></li>
 						<?php
@@ -96,8 +100,10 @@ if (!isset($_SESSION['username'])) {
                             <?php
                             include('liste_db.php');
                         }
-                        else if (isset($_GET["tablename"]))
+                        else if (isset($_GET["tablename"]) && !isset($_GET["structure"]))
                             include('liste_lignes.php');
+                        else if (isset($_GET["structure"]))
+                            include('struct_table.php');
                         else if (isset($_GET["sql"]))
                             include('requete.php');
                         else if (isset($_GET["importer"])) {
