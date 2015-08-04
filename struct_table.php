@@ -42,6 +42,31 @@ if ( !isset($_GET["action"]) ) {
 
 if ( isset($_GET["action"]) && $_GET["action"] == "modifier" ) {
     echo 'Faire le formulaire de modification';
+    ?>
+    <form action="" method="">
+        <table>
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Taille/Valeurs</th>
+            <th>Null</th>
+            
+            <tr>
+                <td><input type="text" name="nom_champ" id="nom_champ" value=""></td>
+                <td>
+                    <select name="datatype" id="datatype">
+                        <option value="INT">INT</option>
+                        <option value="VARCHAR">VARCHAR</option>
+                        <option value="TEXT">TEXT</option>
+                        <option value="DATE">DATE</option>
+                    </select>
+                </td>
+                <td><input type="text" name="value" id="value" value=""></td>
+                <td><input type="text" name="null" id="null" value=""></td>
+            </tr>
+            
+        </table>
+    </form>
+    <?php    
 }
 
 if ( isset($_GET["action"]) && $_GET["action"] == "supprimer" ) {
