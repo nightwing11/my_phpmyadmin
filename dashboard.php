@@ -106,7 +106,7 @@ if (!isset($_SESSION['username'])) {
                                 <h1>Importation dans le serveur actuel</h1>
 
                                 <h2>Fichier à importer :</h2>
-                                <form action="import.php" method="post">
+                                <form action="import.php" method="post" enctype="multipart/form-data">
                                     <p>
                                         Le fichier peut être comprimé (gzip, bzip2, zip) ou non.<br>
                                         Le nom du fichier comprimé doit se terminer par .[format].[compression]. Exemple: .sql.zip
