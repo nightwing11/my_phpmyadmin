@@ -1,8 +1,8 @@
 <?php
 /* Création d'une table */
 if (isset($_POST["nom_table"])) {
-    $db = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-	// $db = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+    // $db = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+	$db = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 	$q = $db->query('CREATE TABLE ' . htmlspecialchars($_POST["nom_table"]) . '');
 	// Ajouter des champs pour mettre des colonnes
@@ -12,8 +12,8 @@ if (isset($_POST["nom_table"])) {
 
 /* Rename bdd */
 if (isset($_POST["nom_db"])) {
-	$base = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-    // $base = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+	// $base = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+    $base = new PDO('mysql:host=localhost;dbname='. htmlspecialchars($_POST["dbname"]) .';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 	$query = $base->query(''); // UPDATE ?
 	$query->closeCursor();
@@ -23,8 +23,8 @@ if (isset($_POST["nom_db"])) {
 
 /* Drop bdd */
 if (isset($_POST["drop_db"])) {
-	$database = new PDO('mysql:host=localhost;', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-    // $database = new PDO('mysql:host=localhost;', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+	// $database = new PDO('mysql:host=localhost;', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+    $database = new PDO('mysql:host=localhost;', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 	$requete = $database->query(htmlspecialchars($_POST["drop_db"]));
 	$requete->closeCursor();
