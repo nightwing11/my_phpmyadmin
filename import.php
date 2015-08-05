@@ -1,4 +1,6 @@
 <?php
+
+ header('Location:dashboard.php?importer=0');
 // connexion à la base 
     try {
             $cnx = new PDO('mysql:host=localhost;', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
@@ -55,17 +57,16 @@
             $res = $cnx->exec($monfichier);
             if($res == false) 
                 {
-                     // echo "</br>\nPDO::errorInfo():\n";
-                     // print_r($cnx->errorInfo());
+                        echo "</br>\nPDO::errorInfo():\n";
+                        print_r($cnx->errorInfo());
                 }
               else  {
                     echo "</br>la requete s'est exécuté avec succès";
-                    header('Location: dashboard.php?importer=0');
+                  
               }
          }
 
      //on ferme tout
     close($monfichier);
     $cnx->closeCursor();
-    
 ?>
