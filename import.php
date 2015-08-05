@@ -41,7 +41,6 @@
 
     //le nom du fichier 
     $filename = $_FILES["file"]["name"];
-    echo $filename;
 
     $monfichier = '';
 
@@ -53,20 +52,18 @@
         echo "</br> erreur de lecture";
       else 
          {   
-            //$monfichier=str_replace("\n","",$monfichier);
-            //$monfichier=str_replace("\r","",$monfichier);
             $res = $cnx->exec($monfichier);
             if($res == false) 
                 {
-                     echo "</br>\nPDO::errorInfo():\n";
-                     print_r($cnx->errorInfo());
-                   //die(print_r($res->errorInfo(), true);
+                     // echo "</br>\nPDO::errorInfo():\n";
+                     // print_r($cnx->errorInfo());
                 }
-            else  
-                echo "</br>la requete s'est exécuté avec succès";
+              else  {
+                    echo "</br>la requete s'est exécuté avec succès";
+                    header('Location: dashboard.php?importer=0');
+              }
          }
 
-    header('dashboard.php?importer=0');
      //on ferme tout
     close($monfichier);
     $cnx->closeCursor();

@@ -3,7 +3,11 @@
 $dbname = htmlspecialchars($_GET["dbname"]);
 $tablename = htmlspecialchars($_GET["tablename"]);
 
+<<<<<<< Updated upstream
     $struct_db = new PDO('mysql:host=localhost;dbname=' . $db_name . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+=======
+$struct_db = new PDO('mysql:host=localhost;dbname=' . $db_name . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+>>>>>>> Stashed changes
 // $struct_db = new PDO('mysql:host=localhost;dbname=' . $dbname . ';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 if ( !isset($_GET["action"]) ) {
