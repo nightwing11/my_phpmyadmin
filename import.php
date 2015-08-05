@@ -35,7 +35,7 @@
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
             echo "Le fichier ". basename( $_FILES["file"]["name"]). " s'est chargé </br>";
         } else {
-            echo "</br>Erreur de chargement du fichier";
+            echo "</br>Erreur de chargement du fichier ";
         }
     }
 
