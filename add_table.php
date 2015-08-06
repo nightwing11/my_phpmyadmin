@@ -5,8 +5,8 @@ $db_name = htmlspecialchars($_POST["dbname"]);
 $table_name = htmlspecialchars($_POST["table_name"]);
 $nb_col = htmlspecialchars($_POST["nbcol"]);
 
-$con_db = new PDO('mysql:host=localhost;dbname=' . $db_name . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
-// $con_db = new PDO('mysql:host=localhost;dbname=' . $db_name . ';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+// $con_db = new PDO('mysql:host=localhost;dbname=' . $db_name . ';', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+$con_db = new PDO('mysql:host=localhost;dbname=' . $db_name . ';', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 // REQUETE QUI CREER LA TABLE
 $create_table = "CREATE TABLE $table_name(ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY);";
