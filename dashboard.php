@@ -114,15 +114,18 @@ if (!isset($_SESSION['username'])) {
                                 <h2>Fichier à importer :</h2>
                                 <form action="import.php" method="post" enctype="multipart/form-data">
                                     <p>
-                                        Le fichier peut être comprimé (gzip, bzip2, zip) ou non.<br>
-                                        Le nom du fichier comprimé doit se terminer par .[format].[compression]. Exemple: .sql.zip
+                                        Le fichier doit être au format .sql
                                     </p>
                                     
                                     <label for="file">Parcourir :</label>
                                     <input type="file" name="file" id="file" />
                                     <p class="taille_max">(Taille maximum: 2 048Kio)</p><br><br>
                                     
-                                    <input type="submit" name="uploder" id="uploader" value="Exécuter" />
+                                    <input type="submit" name="uploder" id="uploader" value="Exécuter"/>
+                                    <?php session_start();
+                                     echo $_SESSION['filesize'];
+                                     echo $_SESSION['filerror'];
+                                     echo '</br>'.$_SESSION['message'];?>
                                 </form>
                             </div>
                         <?php }
@@ -171,7 +174,6 @@ if (!isset($_SESSION['username'])) {
 				</div>
 			</div>
 		</div>
-
     	<script src="js/jquery-1.11.1.min.js"></script>
 		<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script> -->
 		<script type="text/javascript" src="js/script.js"></script>
