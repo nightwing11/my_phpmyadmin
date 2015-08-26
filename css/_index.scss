@@ -1,0 +1,16 @@
+.connexion_area {
+    display: inline-block; position: absolute; width: 350px; border: 1px solid $black; text-align: center; top: 50%; left: 50%; margin-top: -91px; margin-left: -176px; border-radius: 10px; @include box-shadow(0, 0, 10px, 0, #656565);
+    
+    .inner { padding: 20px; }
+    h1 { font-family: 'Courier', sans-serif; padding-bottom: 20px; }
+    
+    .form_elem {
+        display: inline-block; width: 200px; margin: 0 auto 5px;
+        
+        &.last-el { margin-bottom: 15px; }
+    }
+    input[type="text"], input[type="password"] { display: block; width: auto; padding: 5px 10px; }
+    button { border: 1px solid #000; background-color: #FFF; width: 200px; padding: 8px 10px; cursor: pointer; }
+    .btn.black { background-color: $white; color: $black; @include transition(all, 0.2s, ease); }
+    .btn.black:hover { background-color: $black; color: $white; }
+}
